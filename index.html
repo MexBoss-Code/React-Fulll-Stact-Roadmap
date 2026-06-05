@@ -622,6 +622,19 @@
     color: var(--muted);
   }
 
+  .footer-social {
+  color: var(--muted);
+  text-decoration: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  margin: 0 8px;
+  transition: color 0.2s;
+}
+
+.footer-social:hover {
+  color: var(--accent);
+}
+
   .footer-accent {
     color: var(--accent);
   }
@@ -774,6 +787,7 @@
   /* TRACK ITEM CLICKABLE */
   .track-item {
     cursor: pointer;
+    transition: all 0.2s
   }
 
   .track-item:hover .track-name {
@@ -1720,13 +1734,13 @@
 <div class="about-photo-placeholder" id="photoPlaceholder" onclick="document.getElementById('photoUpload').click()" style="display:none">        <span class="about-photo-placeholder-icon">👤</span>
         <span>Click to add<br>your photo</span>
       </div>
-<img class="about-photo" id="aboutPhoto" src="profile.jpg" alt="Chikamso Uzuagu" style="display:block"/>      <input type="file" id="photoUpload" accept="image/*" style="display:none" onchange="handlePhoto(event)"/>
+<img class="about-photo" id="aboutPhoto" src="profile.jpeg" alt="Chikamso Uzuagu" style="display:block"/>      <input type="file" id="photoUpload" accept="image/*" style="display:none" onchange="handlePhoto(event)"/>
     </div>
     <div class="about-content">
       <div class="about-label">// The person behind the roadmap</div>
       <div class="about-name">Chikamso <span>Livinus</span> Uzuagu</div>
       <p class="about-bio">
-        A self-taught developer in the making, based in Lagos, Nigeria. I embarked on this journey recently and quickly realised that the sheer volume of information online can be overwhelming without a clear path. So I built one — for myself and for anyone else who wants to follow along without the unnecessary clutter. This roadmap is my commitment to staying consistent and accountable, one week at a time.
+        A self-taught developer in the making, based in Enugu, Nigeria. I embarked on this journey recently and quickly realised that the sheer volume of information online can be overwhelming without a clear path. So I built one — for myself and for anyone else who wants to follow along without the unnecessary clutter. This roadmap is my commitment to staying consistent and accountable, one week at a time.
       </p>
       <div class="about-links">
         <a class="about-link x-link" href="https://x.com/Chikamso_U" target="_blank">
@@ -1760,32 +1774,15 @@
 </script>
 
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="footer-name">Chikamso Livinus Uzuagu</div>
-      <p class="footer-tagline">Documenting my journey from zero to full stack React developer. Built this roadmap so others can follow without the overwhelm.</p>
-    </div>
-    <div class="footer-connect">
-      <div class="footer-connect-label">// Connect with me</div>
-      <a class="footer-link" href="https://x.com/Chikamso_U" target="_blank">
-        <span class="footer-link-icon">𝕏</span>
-        @Chikamso_U
-      </a>
-      <a class="footer-link" href="https://www.linkedin.com/in/chikamso-uzuagu-77437940b" target="_blank">
-        <span class="footer-link-icon">in</span>
-        chikamso-uzuagu
-      </a>
-      <a class="footer-link" href="https://github.com/MexBoss-Code" target="_blank">
-        <span class="footer-link-icon">⌥</span>
-        MexBoss-Code
-      </a>
-    </div>
-  </div>
   <div class="footer-bottom">
     <div class="footer-text">© 2026 <span class="footer-accent">Chikamso Livinus Uzuagu</span>. All rights reserved.</div>
+    <div class="footer-text">
+      <a class="footer-social" href="https://x.com/Chikamso_U" target="_blank">𝕏</a>
+      <a class="footer-social" href="https://www.linkedin.com/in/chikamso-uzuagu-77437940b" target="_blank">in</a>
+      <a class="footer-social" href="https://github.com/MexBoss-Code" target="_blank">⌥</a>
+    </div>
     <div class="footer-text">~28 weeks · <span class="footer-accent">Web → Mobile</span></div>
   </div>
 </footer>
-
 </body>
 </html>
