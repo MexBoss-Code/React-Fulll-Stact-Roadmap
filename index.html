@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>React Native Developer — Scheme of Work</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a26;
+    --accent: #f0c040;
+    --accent2: #60d0ff;
+    --accent3: #ff6b6b;
+    --text: #e8e8f0;
+    --muted: #7070a0;
+    --border: #2a2a40;
+    --html: #f06529;
+    --css: #2965f1;
+    --js: #f7df1e;
+    --react: #61dafb;
+    --rn: #00d4aa;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Lora', serif;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 80px 40px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: fixed;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(240,192,64,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 6px 14px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 span {
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 560px;
+    font-style: italic;
+    margin-bottom: 40px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* DIVIDER */
+  .divider {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
+    border-top: 1px solid var(--border);
+    margin-bottom: 0;
+  }
+
+  /* PATH OVERVIEW */
+  .path-overview {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  .path-track {
+    display: flex;
+    gap: 0;
+    margin-bottom: 48px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .track-item {
+    flex: 1;
+    min-width: 120px;
+    padding: 16px 20px;
+    text-align: center;
+    border: 1px solid var(--border);
+    position: relative;
+    transition: all 0.2s;
+  }
+
+  .track-item:not(:last-child) {
+    border-right: none;
+  }
+
+  .track-item:hover {
+    background: var(--surface);
+  }
+
+  .track-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 auto 8px;
+  }
+
+  .track-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .track-weeks {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+  }
+
+  /* PHASE SECTIONS */
+  .phases {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+
+  .phase {
+    margin-bottom: 64px;
+    position: relative;
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .phase-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 72px;
+    font-weight: 800;
+    line-height: 1;
+    opacity: 0.08;
+    min-width: 80px;
+    letter-spacing: -4px;
+  }
+
+  .phase-meta {
+    flex: 1;
+  }
+
+  .phase-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .phase-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .phase-summary {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 600px;
+  }
+
+  .phase-duration {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: right;
+    min-width: 100px;
+  }
+
+  .phase-duration strong {
+    display: block;
+    font-size: 20px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  /* WEEKS */
+  .weeks-grid {
+    display: grid;
+    gap: 16px;
+  }
+
+  .week-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .week-card:hover {
+    border-color: var(--muted);
+  }
+
+  .week-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+  }
+
+  .week-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .week-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .week-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .topics-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .topics-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .topics-list li::before {
+    content: '→';
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .project-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    margin-top: 14px;
+  }
+
+  .project-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .project-content {
+    flex: 1;
+  }
+
+  .project-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+
+  .project-title {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* COLOR SCHEMES PER PHASE */
+  .phase-html .phase-tag { background: rgba(240,101,41,0.15); color: var(--html); }
+  .phase-html .week-card::before { background: var(--html); }
+  .phase-html .topics-list li::before { color: var(--html); }
+  .phase-html .phase-number { color: var(--html); opacity: 0.12; }
+
+  .phase-css .phase-tag { background: rgba(41,101,241,0.15); color: var(--css); }
+  .phase-css .week-card::before { background: var(--css); }
+  .phase-css .topics-list li::before { color: var(--css); }
+  .phase-css .phase-number { color: var(--css); opacity: 0.12; }
+
+  .phase-js .phase-tag { background: rgba(247,223,30,0.1); color: var(--js); }
+  .phase-js .week-card::before { background: var(--js); }
+  .phase-js .topics-list li::before { color: var(--js); }
+  .phase-js .phase-number { color: var(--js); opacity: 0.12; }
+
+  .phase-react .phase-tag { background: rgba(97,218,251,0.1); color: var(--react); }
+  .phase-react .week-card::before { background: var(--react); }
+  .phase-react .topics-list li::before { color: var(--react); }
+  .phase-react .phase-number { color: var(--react); opacity: 0.12; }
+
+  .phase-rn .phase-tag { background: rgba(0,212,170,0.1); color: var(--rn); }
+  .phase-rn .week-card::before { background: var(--rn); }
+  .phase-rn .topics-list li::before { color: var(--rn); }
+  .phase-rn .phase-number { color: var(--rn); opacity: 0.12; }
+
+  /* RESOURCES SECTION */
+  .resources {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+
+  .resources-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+  }
+
+  .resources-sub {
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 40px;
+  }
+
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .resource-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px 22px;
+    transition: all 0.2s;
+  }
+
+  .resource-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .resource-phase {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .resource-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .resource-desc {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .resource-link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .resource-link:hover {
+    border-color: var(--accent);
+  }
+
+  .resource-type {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .type-free { background: rgba(0,212,170,0.15); color: var(--rn); }
+  .type-paid { background: rgba(240,192,64,0.15); color: var(--accent); }
+
+  /* TIPS */
+  .tips {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .tip-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px;
+  }
+
+  .tip-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .tip-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .tip-text {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 16px;
+  }
+
+  .footer-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .footer-accent {
+    color: var(--accent);
+  }
+
+  @media (max-width: 600px) {
+    .hero, .path-overview, .phases, .resources, .tips { padding-left: 20px; padding-right: 20px; }
+    .hero h1 { font-size: 36px; letter-spacing: -1px; }
+    .phase-header { flex-direction: column; gap: 12px; }
+    .phase-number { font-size: 48px; }
+    .stats-row { gap: 20px; }
+    .path-track { gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">Complete Scheme of Work</div>
+  <h1>Road to <span>React Native</span> Developer</h1>
+  <p class="hero-sub">A structured, no-fluff curriculum from absolute zero to building and publishing cross-platform mobile apps.</p>
+  <div class="stats-row">
+    <div class="stat">
+      <span class="stat-num">5</span>
+      <span class="stat-label">Phases</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">28+</span>
+      <span class="stat-label">Weeks</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">15+</span>
+      <span class="stat-label">Projects</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">2</span>
+      <span class="stat-label">Platforms</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PATH OVERVIEW -->
+<section class="path-overview">
+  <p class="section-label">// Learning Track Overview</p>
+  <div class="path-track">
+    <div class="track-item">
+      <div class="track-dot" style="background:var(--html)"></div>
+      <div class="track-name" style="color:var(--html)">HTML</div>
+      <div class="track-weeks">3–4 wks</div>
+    </div>
+    <div class="track-item">
+      <div class="track-dot" style="background:var(--css)"></div>
+      <div class="track-name" style="color:var(--css)">CSS</div>
+      <div class="track-weeks">4–5 wks</div>
+    </div>
+    <div class="track-item">
+      <div class="track-dot" style="background:var(--js)"></div>
+      <div class="track-name" style="color:var(--js)">JavaScript</div>
+      <div class="track-weeks">8–10 wks</div>
+    </div>
+    <div class="track-item">
+      <div class="track-dot" style="background:var(--react)"></div>
+      <div class="track-name" style="color:var(--react)">React</div>
+      <div class="track-weeks">6–8 wks</div>
+    </div>
+    <div class="track-item">
+      <div class="track-dot" style="background:var(--rn)"></div>
+      <div class="track-name" style="color:var(--rn)">React Native</div>
+      <div class="track-weeks">6–8 wks</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASES -->
+<section class="phases">
+
+  <!-- PHASE 1: HTML -->
+  <div class="phase phase-html">
+    <div class="phase-header">
+      <div class="phase-number">01</div>
+      <div class="phase-meta">
+        <div class="phase-tag">⬡ Phase One — HTML</div>
+        <h2 class="phase-title">Structure & Markup</h2>
+        <p class="phase-summary">HTML is the skeleton of everything on the web. You'll learn to structure content meaningfully before adding any style or behavior.</p>
+      </div>
+      <div class="phase-duration">
+        <strong>3–4 wks</strong>
+        <span>~1–2 hrs/day</span>
+      </div>
+    </div>
+
+    <div class="weeks-grid">
+      <div class="week-card">
+        <div class="week-head">
+          <span class="week-label">Week 01</span>
+        </div>
+        <div class="week-title">Introduction to HTML & Document Structure</div>
+        <ul class="topics-list">
+          <li>What is HTML and how browsers work</li>
+          <li>HTML document anatomy (DOCTYPE, html, head, body)</li>
+          <li>Headings h1–h6 and paragraphs</li>
+          <li>Line breaks and horizontal rules</li>
+          <li>HTML comments</li>
+          <li>Character entities (&amp;amp;, &amp;lt;, &amp;gt;)</li>
+          <li>Viewing source code in a browser</li>
+          <li>Setting up VS Code for HTML</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Personal bio page — plain HTML, no styling. Just structure.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head">
+          <span class="week-label">Week 02</span>
+        </div>
+        <div class="week-title">Links, Images & Lists</div>
+        <ul class="topics-list">
+          <li>Anchor tags and href attributes</li>
+          <li>Absolute vs relative URLs</li>
+          <li>Opening links in new tabs (target="_blank")</li>
+          <li>Image tags, src, alt text, width/height</li>
+          <li>Ordered lists (ol) and unordered lists (ul)</li>
+          <li>Nested lists</li>
+          <li>Description lists (dl, dt, dd)</li>
+          <li>Inline vs block elements</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Recipe page with ingredients list, steps, and a food image</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head">
+          <span class="week-label">Week 03</span>
+        </div>
+        <div class="week-title">Tables, Forms & Semantic HTML</div>
+        <ul class="topics-list">
+          <li>Table structure (table, tr, th, td)</li>
+          <li>Table spanning (colspan, rowspan)</li>
+          <li>Form elements: input, textarea, select, button</li>
+          <li>Input types: text, email, password, number, checkbox, radio</li>
+          <li>Form labels and accessibility</li>
+          <li>Semantic tags: header, nav, main, section, article, aside, footer</li>
+          <li>Why semantics matter for SEO and accessibility</li>
+          <li>div and span as non-semantic containers</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Multi-page website: Home, About, Contact form — fully semantic HTML</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2: CSS -->
+  <div class="phase phase-css">
+    <div class="phase-header">
+      <div class="phase-number">02</div>
+      <div class="phase-meta">
+        <div class="phase-tag">⬡ Phase Two — CSS</div>
+        <h2 class="phase-title">Visual Design & Layout</h2>
+        <p class="phase-summary">CSS transforms raw HTML into beautiful, responsive interfaces. This phase is where creativity meets code — you'll learn to build layouts that work on any screen size.</p>
+      </div>
+      <div class="phase-duration">
+        <strong>4–5 wks</strong>
+        <span>~1–2 hrs/day</span>
+      </div>
+    </div>
+
+    <div class="weeks-grid">
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 04</span></div>
+        <div class="week-title">CSS Fundamentals & The Box Model</div>
+        <ul class="topics-list">
+          <li>How to link CSS to HTML (inline, internal, external)</li>
+          <li>CSS selectors: element, class, ID, universal</li>
+          <li>Specificity and the cascade</li>
+          <li>Colors: named, hex, rgb, hsl</li>
+          <li>The box model: content, padding, border, margin</li>
+          <li>box-sizing: border-box</li>
+          <li>Width, height, min/max variants</li>
+          <li>Display: block, inline, inline-block, none</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Style last week's multi-page site with colors, spacing, and typography</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 05</span></div>
+        <div class="week-title">Typography, Backgrounds & Pseudo-classes</div>
+        <ul class="topics-list">
+          <li>Font properties: family, size, weight, style, line-height</li>
+          <li>Google Fonts integration</li>
+          <li>Text alignment, decoration, transform</li>
+          <li>Background: color, image, size, position, repeat</li>
+          <li>Gradients: linear and radial</li>
+          <li>Pseudo-classes: :hover, :focus, :nth-child, :first-child</li>
+          <li>Pseudo-elements: ::before, ::after</li>
+          <li>CSS custom properties (variables)</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Styled card component with hover effects and gradient backgrounds</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 06</span></div>
+        <div class="week-title">Flexbox — Modern Layout System</div>
+        <ul class="topics-list">
+          <li>Flex container vs flex items</li>
+          <li>flex-direction: row and column</li>
+          <li>justify-content: space-between, center, etc.</li>
+          <li>align-items and align-self</li>
+          <li>flex-wrap and flex-grow/shrink/basis</li>
+          <li>gap property</li>
+          <li>Centering elements perfectly with flexbox</li>
+          <li>Building navigation bars with flexbox</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Responsive navigation bar + product card grid using flexbox only</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 07</span></div>
+        <div class="week-title">CSS Grid & Responsive Design</div>
+        <ul class="topics-list">
+          <li>Grid container and grid items</li>
+          <li>grid-template-columns and rows</li>
+          <li>fr units and repeat()</li>
+          <li>Grid gap, column-span, row-span</li>
+          <li>When to use Grid vs Flexbox</li>
+          <li>Media queries (@media)</li>
+          <li>Breakpoints: mobile, tablet, desktop</li>
+          <li>Mobile-first design philosophy</li>
+          <li>Viewport meta tag</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Fully responsive portfolio/landing page — desktop + mobile layouts</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 08</span></div>
+        <div class="week-title">CSS Transitions, Animations & Positioning</div>
+        <ul class="topics-list">
+          <li>Position: static, relative, absolute, fixed, sticky</li>
+          <li>z-index and stacking context</li>
+          <li>CSS transitions (transition property)</li>
+          <li>@keyframes and animation property</li>
+          <li>Transform: translate, rotate, scale, skew</li>
+          <li>Box-shadow and text-shadow</li>
+          <li>Border-radius and clip-path basics</li>
+          <li>Overflow: hidden, scroll, auto</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Animated landing page with scroll effects and hover interactions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 3: JavaScript -->
+  <div class="phase phase-js">
+    <div class="phase-header">
+      <div class="phase-number">03</div>
+      <div class="phase-meta">
+        <div class="phase-tag">⬡ Phase Three — JavaScript</div>
+        <h2 class="phase-title">Programming & Logic</h2>
+        <p class="phase-summary">JavaScript is the engine of the web — and the language you'll use for everything: websites, web apps, and React Native mobile apps. This is the most important and longest phase.</p>
+      </div>
+      <div class="phase-duration">
+        <strong>8–10 wks</strong>
+        <span>~1–2 hrs/day</span>
+      </div>
+    </div>
+
+    <div class="weeks-grid">
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 09</span></div>
+        <div class="week-title">JavaScript Basics — Variables & Data Types</div>
+        <ul class="topics-list">
+          <li>What JavaScript is and where it runs</li>
+          <li>var, let, const — differences and when to use each</li>
+          <li>Data types: string, number, boolean, null, undefined</li>
+          <li>typeof operator</li>
+          <li>String methods: length, toUpperCase, slice, includes, split</li>
+          <li>Number methods and Math object</li>
+          <li>Template literals (backtick strings)</li>
+          <li>console.log() for debugging</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Console-based age calculator and string formatter</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 10</span></div>
+        <div class="week-title">Operators, Conditionals & Loops</div>
+        <ul class="topics-list">
+          <li>Arithmetic, comparison, and logical operators</li>
+          <li>Truthy and falsy values</li>
+          <li>if, else if, else statements</li>
+          <li>Ternary operator</li>
+          <li>Switch statements</li>
+          <li>for loops and while loops</li>
+          <li>break and continue</li>
+          <li>Nested loops</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">FizzBuzz + number guessing game in the console</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 11</span></div>
+        <div class="week-title">Functions</div>
+        <ul class="topics-list">
+          <li>Function declarations vs expressions</li>
+          <li>Arrow functions (=&gt;)</li>
+          <li>Parameters and arguments</li>
+          <li>Return values</li>
+          <li>Default parameters</li>
+          <li>Scope: global vs local vs block</li>
+          <li>Closures (introduction)</li>
+          <li>Higher-order functions (passing functions as arguments)</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Calculator app with reusable functions for each operation</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 12</span></div>
+        <div class="week-title">Arrays & Array Methods</div>
+        <ul class="topics-list">
+          <li>Creating and accessing arrays</li>
+          <li>push, pop, shift, unshift</li>
+          <li>splice, slice, concat, join</li>
+          <li>forEach — iterate over arrays</li>
+          <li>map — transform arrays</li>
+          <li>filter — filter arrays</li>
+          <li>find and findIndex</li>
+          <li>reduce — powerful aggregation</li>
+          <li>Spread operator with arrays</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Shopping cart logic: add, remove, filter, and total items</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 13</span></div>
+        <div class="week-title">Objects & Object-Oriented Thinking</div>
+        <ul class="topics-list">
+          <li>Object literals: keys and values</li>
+          <li>Accessing properties: dot vs bracket notation</li>
+          <li>Nested objects</li>
+          <li>Object methods (functions inside objects)</li>
+          <li>Destructuring objects and arrays</li>
+          <li>Spread operator with objects</li>
+          <li>Object.keys(), Object.values(), Object.entries()</li>
+          <li>Introduction to classes and constructor functions</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Student grade tracker using objects and arrays</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 14</span></div>
+        <div class="week-title">The DOM — Making Pages Interactive</div>
+        <ul class="topics-list">
+          <li>What the DOM is</li>
+          <li>Selecting elements: getElementById, querySelector, querySelectorAll</li>
+          <li>Changing text and HTML content</li>
+          <li>Changing styles dynamically</li>
+          <li>Adding and removing CSS classes</li>
+          <li>Creating and appending elements</li>
+          <li>Removing elements</li>
+          <li>Event listeners: click, input, submit, keydown</li>
+          <li>Event delegation</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Interactive to-do list — add, complete, delete tasks. Fully DOM-based.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 15</span></div>
+        <div class="week-title">Asynchronous JavaScript & APIs</div>
+        <ul class="topics-list">
+          <li>Synchronous vs asynchronous code</li>
+          <li>setTimeout and setInterval</li>
+          <li>Callbacks and callback hell</li>
+          <li>Promises: .then() and .catch()</li>
+          <li>async/await syntax</li>
+          <li>try/catch for error handling</li>
+          <li>What an API is</li>
+          <li>fetch() — making HTTP requests</li>
+          <li>JSON: parsing and stringifying</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Weather app using a free public API (OpenWeatherMap)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 16</span></div>
+        <div class="week-title">ES6+ Modern JavaScript & Local Storage</div>
+        <ul class="topics-list">
+          <li>Modules: import and export</li>
+          <li>Optional chaining (?.)</li>
+          <li>Nullish coalescing (??)</li>
+          <li>localStorage and sessionStorage</li>
+          <li>Saving and loading data from storage</li>
+          <li>JSON with localStorage</li>
+          <li>Error types and custom errors</li>
+          <li>Regular expressions (basics)</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">To-do list upgraded — data persists after page refresh using localStorage</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 4: REACT -->
+  <div class="phase phase-react">
+    <div class="phase-header">
+      <div class="phase-number">04</div>
+      <div class="phase-meta">
+        <div class="phase-tag">⬡ Phase Four — React</div>
+        <h2 class="phase-title">Component-Based UI</h2>
+        <p class="phase-summary">React teaches you to think in components — reusable building blocks. Mastering React makes the transition to React Native feel natural and fast.</p>
+      </div>
+      <div class="phase-duration">
+        <strong>6–8 wks</strong>
+        <span>~1–2 hrs/day</span>
+      </div>
+    </div>
+
+    <div class="weeks-grid">
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 17</span></div>
+        <div class="week-title">React Fundamentals — Components & JSX</div>
+        <ul class="topics-list">
+          <li>What React is and why it exists</li>
+          <li>Setting up with Vite (recommended over Create React App)</li>
+          <li>JSX — writing HTML inside JavaScript</li>
+          <li>Functional components</li>
+          <li>Rendering components</li>
+          <li>Props — passing data to components</li>
+          <li>Children prop</li>
+          <li>Component composition</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Profile card component with reusable sub-components</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 18</span></div>
+        <div class="week-title">State Management with Hooks</div>
+        <ul class="topics-list">
+          <li>What state is and why it matters</li>
+          <li>useState hook — reading and updating state</li>
+          <li>Re-rendering and how React updates the DOM</li>
+          <li>Handling events in React (onClick, onChange)</li>
+          <li>Controlled inputs and forms</li>
+          <li>Conditional rendering (&&, ternary)</li>
+          <li>Lists and keys (.map() in JSX)</li>
+          <li>Lifting state up</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">React to-do list with add, delete, and toggle complete</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 19</span></div>
+        <div class="week-title">useEffect & Fetching Data</div>
+        <ul class="topics-list">
+          <li>useEffect hook — side effects in React</li>
+          <li>Dependency array: [], [value], no array</li>
+          <li>Fetching data from APIs with useEffect</li>
+          <li>Loading and error states</li>
+          <li>Cleanup functions</li>
+          <li>Custom hooks (introduction)</li>
+          <li>useRef hook basics</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Movie/show search app using a public API (TMDB or OMDB)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 20</span></div>
+        <div class="week-title">React Router & Multi-Page Apps</div>
+        <ul class="topics-list">
+          <li>Installing React Router v6</li>
+          <li>BrowserRouter, Routes, Route components</li>
+          <li>Link and NavLink for navigation</li>
+          <li>useNavigate — programmatic navigation</li>
+          <li>useParams — dynamic route parameters</li>
+          <li>Nested routes</li>
+          <li>404 Not Found page</li>
+          <li>Protected routes (basics)</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Multi-page blog with home, post list, and individual post pages</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 21–22</span></div>
+        <div class="week-title">State Management & Capstone Project</div>
+        <ul class="topics-list">
+          <li>useContext hook — sharing state across components</li>
+          <li>useReducer hook — complex state logic</li>
+          <li>Context + useReducer as a mini Redux</li>
+          <li>Introduction to Zustand (lightweight state manager)</li>
+          <li>React Query / TanStack Query for server state</li>
+          <li>Performance: useMemo and useCallback basics</li>
+          <li>Code splitting with React.lazy</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Capstone Project</div>
+            <div class="project-title">Full e-commerce UI: product listing, cart, checkout flow with context state</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 5: REACT NATIVE -->
+  <div class="phase phase-rn">
+    <div class="phase-header">
+      <div class="phase-number">05</div>
+      <div class="phase-meta">
+        <div class="phase-tag">⬡ Phase Five — React Native</div>
+        <h2 class="phase-title">Cross-Platform Mobile Apps</h2>
+        <p class="phase-summary">This is where everything converges. React Native uses the same JavaScript and React knowledge you've built — just with mobile-specific components and APIs. Android and iOS from one codebase.</p>
+      </div>
+      <div class="phase-duration">
+        <strong>6–8 wks</strong>
+        <span>~1–2 hrs/day</span>
+      </div>
+    </div>
+
+    <div class="weeks-grid">
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 23</span></div>
+        <div class="week-title">React Native Setup & Core Concepts</div>
+        <ul class="topics-list">
+          <li>Expo vs React Native CLI — choosing the right setup</li>
+          <li>Setting up Expo Go on your Android phone</li>
+          <li>Project structure overview</li>
+          <li>Core components: View, Text, Image, ScrollView</li>
+          <li>StyleSheet API (CSS-like but for mobile)</li>
+          <li>Flexbox in React Native (default layout system)</li>
+          <li>Platform-specific code (Platform.OS)</li>
+          <li>Hot reload and fast refresh</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Profile card app running live on your Android phone via Expo Go</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 24</span></div>
+        <div class="week-title">User Input, Buttons & Touchables</div>
+        <ul class="topics-list">
+          <li>TextInput component and keyboard types</li>
+          <li>Button, TouchableOpacity, TouchableHighlight</li>
+          <li>Pressable component (modern approach)</li>
+          <li>Handling touch events</li>
+          <li>KeyboardAvoidingView</li>
+          <li>Alert and modal dialogs</li>
+          <li>ActivityIndicator (loading spinner)</li>
+          <li>Switch and Slider components</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">BMI calculator app with keyboard input and result display</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 25</span></div>
+        <div class="week-title">Navigation with React Navigation</div>
+        <ul class="topics-list">
+          <li>Installing React Navigation</li>
+          <li>Stack Navigator — screen-by-screen navigation</li>
+          <li>Tab Navigator — bottom tab bar</li>
+          <li>Drawer Navigator — side menu</li>
+          <li>Passing parameters between screens</li>
+          <li>Customizing headers and tab bars</li>
+          <li>Nested navigators</li>
+          <li>Deep linking basics</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">News reader app with tab navigation and detail screen</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 26</span></div>
+        <div class="week-title">Lists, APIs & Data Fetching</div>
+        <ul class="topics-list">
+          <li>FlatList — performant lists in mobile</li>
+          <li>SectionList — grouped lists</li>
+          <li>Pull-to-refresh functionality</li>
+          <li>Infinite scroll / pagination</li>
+          <li>Fetching REST APIs with fetch/axios</li>
+          <li>Handling loading and error states</li>
+          <li>AsyncStorage — local data persistence</li>
+          <li>React Query in React Native</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Crypto price tracker with live API data and FlatList</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 27</span></div>
+        <div class="week-title">Device Features & Expo APIs</div>
+        <ul class="topics-list">
+          <li>expo-camera — accessing the camera</li>
+          <li>expo-image-picker — gallery access</li>
+          <li>expo-location — GPS location</li>
+          <li>expo-notifications — push notifications</li>
+          <li>expo-sensors — accelerometer, gyroscope</li>
+          <li>Linking API — open URLs, phone calls</li>
+          <li>Haptic feedback</li>
+          <li>Permissions handling on Android/iOS</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🛠</span>
+          <div class="project-content">
+            <div class="project-label">Project</div>
+            <div class="project-title">Photo journal app — take photo, add note, save to device</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-head"><span class="week-label">Week 28</span></div>
+        <div class="week-title">Publishing & Capstone Project</div>
+        <ul class="topics-list">
+          <li>App icons and splash screens</li>
+          <li>app.json / app.config.js configuration</li>
+          <li>Building APK with Expo EAS Build</li>
+          <li>Publishing to Google Play Store (steps)</li>
+          <li>Publishing to Apple App Store (overview)</li>
+          <li>Environment variables and secrets</li>
+          <li>Crash reporting with Sentry</li>
+          <li>App versioning best practices</li>
+        </ul>
+        <div class="project-box">
+          <span class="project-icon">🏆</span>
+          <div class="project-content">
+            <div class="project-label">Final Capstone</div>
+            <div class="project-title">Full mobile app of your choice — designed, built, and published to Google Play</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- RESOURCES -->
+<section class="resources">
+  <div class="divider" style="padding:0; margin-bottom:60px;"></div>
+  <p class="section-label">// Recommended Learning Materials</p>
+  <h2 class="resources-title">Online Resources</h2>
+  <p class="resources-sub">Curated free and paid materials — ordered by phase. These are trusted by millions of developers worldwide.</p>
+
+  <div class="resources-grid">
+    <div class="resource-card">
+      <div class="resource-phase" style="color:var(--html)">HTML + CSS</div>
+      <div class="resource-name">freeCodeCamp <span class="resource-type type-free">Free</span></div>
+      <p class="resource-desc">Comprehensive curriculum covering HTML, CSS, and responsive design with hands-on projects and certifications.</p>
+      <a class="resource-link" href="https://www.freecodecamp.org" target="_blank">freecodecamp.org →</a>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-phase" style="color:var(--html)">HTML + CSS</div>
+      <div class="resource-name">The Odin Project <span class="resource-type type-free">Free</span></div>
+      <p class="resource-desc">Open-source full stack curriculum. Highly respected, project-based, and community-supported. One of the best free resources online.</p>
+      <a class="resource-link" href="https://www.theodinproject.com" target="_blank">theodinproject.com →</a>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-phase" style="color:var(--css)">CSS</div>
+      <div class="resource-name">Kevin Powell YouTube <span class="resource-type type-free">Free</span></div>
+      <p class="resource-desc">The undisputed king of CSS on YouTube. Deep dives into flexbox, grid, responsive design, and modern CSS techniques.</p>
+      <a class="resource-link" href="https://www.youtube.com/@KevinPowell" target="_blank">YouTube: Kevin Powell →</a>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-phase" style="color:var(--css)">CSS</div>
+      <div class="resource-name">CSS Tricks <span class="resource-type type-free">Free</span></div>
+      <p class="resource-desc">The go-to reference site for CSS. Their Flexbox and Grid guides are legendary — bookmark these for life.</p>
+      <a class="resource-link" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">css-tricks.com →</a>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-phase" style="color:var(--js)">JavaScript</div>
+      <div class="resource-name">javascript.info <span class="resource-type type-free">Free</span></div>
+      <p class="resource-desc">The most thorough and well-written free JavaScript textbook on the internet. Covers basics to advanced topics with exercises.</p>
+      <a class="resource-link" href="https://javascript.info" target="_blank">javascript.info →</a>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-phase" style="color:var(--js)">JavaScript</div>
+      <div class="resource-name">Traversy Media YouTube <span class="resource-type type-free">Free</span></div>
+      <p class="resource-desc">Brad Traversy's crash courses are beginner-friendly, fast, and practical. His JS crash course is a classic starting point.</p>
+      <a class="resource-link" href="https://www.youtube.com/@TraversyMedia" target="_blank">YouTube: Traversy Media →</a>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-phase" style="color:var(--js)">JavaScript</div>
+      <div class="resource-name">Eloquent JavaScript <span class="resource-type type-free">Free</span></div>
+      <p class="resource-desc">A free, deep book on JavaScript programming. Best read after learning the basics — it builds strong understanding of how JS really works.</p>
+      <a class="resource-link" href="https://eloquentjavascript.net" target="_blank">eloquentjavascript.net →</a>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-phase" style="color:var(--react)">React</div>
+      <div class="resource-name">Official React Docs <span class="resource-type type-free">Free</span></div>
+      <p class="resource-desc">React's official documentation was completely rewritten in 2023 and is now one of the best learning resources for any framework. Start here.</p>
+      <a class="resource-link" href="https://react.dev/learn" target="_blank">react.dev/learn →</a>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-phase" style="color:var(--react)">React</div>
+      <div class="resource-name">Scrimba React Course <span class="resource-type type-free">Free</span></div>
+      <p class="resource-desc">Interactive React course where you code inside the browser alongside the instructor. Beginner-friendly and very hands-on.</p>
+      <a class="resource-link" href="https://scrimba.com/learn/learnreact" target="_blank">scrimba.com →</a>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-phase" style="color:var(--react)">React</div>
+      <div class="resource-name">Net Ninja React Series <span class="resource-type type-free">Free</span></div>
+      <p class="resource-desc">Shaun Pelling's YouTube series on React is clear, well-paced, and covers hooks, context, and routing in digestible videos.</p>
+      <a class="resource-link" href="https://www.youtube.com/@NetNinja" target="_blank">YouTube: Net Ninja →</a>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-phase" style="color:var(--rn)">React Native</div>
+      <div class="resource-name">Official React Native Docs <span class="resource-type type-free">Free</span></div>
+      <p class="resource-desc">Always the first stop. The official docs cover every component, API, and concept. Use alongside tutorials for best results.</p>
+      <a class="resource-link" href="https://reactnative.dev/docs/getting-started" target="_blank">reactnative.dev →</a>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-phase" style="color:var(--rn)">React Native</div>
+      <div class="resource-name">Expo Documentation <span class="resource-type type-free">Free</span></div>
+      <p class="resource-desc">Essential reading for Expo-based development. Covers setup, device APIs, building, and publishing in detail.</p>
+      <a class="resource-link" href="https://docs.expo.dev" target="_blank">docs.expo.dev →</a>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-phase" style="color:var(--rn)">React Native</div>
+      <div class="resource-name">Academind React Native <span class="resource-type type-paid">Paid</span></div>
+      <p class="resource-desc">Maximilian Schwarzmüller's Udemy course is the most comprehensive React Native course available. Worth every penny — often on sale for under $15.</p>
+      <a class="resource-link" href="https://www.udemy.com/course/react-native-the-practical-guide" target="_blank">udemy.com →</a>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-phase" style="color:var(--rn)">React Native</div>
+      <div class="resource-name">Notjust.dev YouTube <span class="resource-type type-free">Free</span></div>
+      <p class="resource-desc">Vadim Savin builds real-world React Native apps from scratch on YouTube. Great for seeing how professional apps are structured.</p>
+      <a class="resource-link" href="https://www.youtube.com/@notjustdev" target="_blank">YouTube: notjust.dev →</a>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-phase" style="color:var(--accent)">All Phases</div>
+      <div class="resource-name">MDN Web Docs <span class="resource-type type-free">Free</span></div>
+      <p class="resource-desc">Mozilla's reference documentation for HTML, CSS, and JavaScript. This is your encyclopedia — use it to look up anything, anytime.</p>
+      <a class="resource-link" href="https://developer.mozilla.org" target="_blank">developer.mozilla.org →</a>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-phase" style="color:var(--accent)">Practice</div>
+      <div class="resource-name">Frontend Mentor <span class="resource-type type-free">Free</span></div>
+      <p class="resource-desc">Real-world HTML/CSS/JS challenges with professional designs. Build your portfolio with these projects and get community feedback.</p>
+      <a class="resource-link" href="https://www.frontendmentor.io" target="_blank">frontendmentor.io →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section class="tips">
+  <p class="section-label">// Tips for Success</p>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-icon">⏱</div>
+      <div class="tip-title">Consistency Over Intensity</div>
+      <p class="tip-text">1–2 hours every day beats 10 hours on a weekend. Your brain consolidates knowledge during sleep — daily practice is how programming actually sticks.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🏗</div>
+      <div class="tip-title">Build, Don't Just Watch</div>
+      <p class="tip-text">Every tutorial should end with you building something extra on your own. The moment you type code without copying is the moment real learning happens.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🐛</div>
+      <div class="tip-title">Embrace Bugs</div>
+      <p class="tip-text">Debugging is not a sign of failure — it's the actual job. Every bug you solve independently makes you a better developer than any tutorial could.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">📁</div>
+      <div class="tip-title">Use GitHub from Day One</div>
+      <p class="tip-text">Create a GitHub account and push every project you build. This becomes your portfolio and proves your skills to future employers or clients.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🚫</div>
+      <div class="tip-title">Avoid Tutorial Hell</div>
+      <p class="tip-text">Don't watch 20 tutorials before building. Watch one, then build. Then watch the next one. Consuming content is not the same as learning.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🤝</div>
+      <div class="tip-title">Join a Community</div>
+      <p class="tip-text">Find developer communities on Twitter/X, Discord, or local dev groups. Asking questions and helping others accelerates growth faster than going solo.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-text">Road to React Native — Full Scheme of Work</div>
+  <div class="footer-text">~28 weeks · <span class="footer-accent">Web → Mobile</span></div>
+</footer>
+
+</body>
+</html>
