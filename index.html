@@ -529,24 +529,260 @@
   /* FOOTER */
   footer {
     border-top: 1px solid var(--border);
-    padding: 40px;
+    padding: 60px 40px 40px;
     max-width: 900px;
     margin: 0 auto;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 40px;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+
+  .footer-tagline {
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.6;
+    max-width: 300px;
+  }
+
+  .footer-connect {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .footer-connect-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .footer-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+
+  .footer-link:hover {
+    color: var(--text);
+    border-color: var(--accent);
+    background: var(--surface);
+  }
+
+  .footer-link:hover .footer-link-icon {
+    color: var(--accent);
+  }
+
+  .footer-link-icon {
+    font-size: 15px;
+    transition: color 0.2s;
+  }
+
+  .footer-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: gap;
-    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
   .footer-text {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--muted);
   }
 
   .footer-accent {
     color: var(--accent);
+  }
+
+  /* ABOUT SECTION */
+  .about-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .about-inner {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .about-photo-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .about-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+    display: block;
+  }
+
+  .about-photo-placeholder {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 3px dashed var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-photo-placeholder:hover {
+    border-color: var(--accent);
+  }
+
+  .about-photo-placeholder input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+
+  .about-photo-placeholder span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--muted);
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .about-photo-placeholder .photo-icon {
+    font-size: 32px;
+    pointer-events: none;
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .about-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .about-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text);
+  }
+
+  .about-name span {
+    color: var(--accent);
+  }
+
+  .about-bio {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  .about-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+
+  .about-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+
+  .about-link:hover {
+    color: var(--text);
+    background: var(--surface);
+  }
+
+  .about-link.x-link:hover { border-color: #1da1f2; color: #1da1f2; }
+  .about-link.li-link:hover { border-color: #0077b5; color: #0077b5; }
+  .about-link.gh-link:hover { border-color: var(--accent); color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .about-inner { grid-template-columns: 1fr; }
+    .about-photo-wrap { flex-direction: row; gap: 20px; align-items: center; }
+    .about-photo, .about-photo-placeholder { width: 100px; height: 100px; }
+    .about-section { padding: 40px 20px; }
+  }
+
+  /* TRACK ITEM CLICKABLE */
+  .track-item {
+    cursor: pointer;
+  }
+
+  .track-item:hover .track-name {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 600px) {
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
   }
 
   @media (max-width: 600px) {
@@ -590,29 +826,29 @@
 
 <!-- PATH OVERVIEW -->
 <section class="path-overview">
-  <p class="section-label">// Learning Track Overview</p>
+  <p class="section-label">// Learning Track Overview — click a phase to jump to it</p>
   <div class="path-track">
-    <div class="track-item">
+    <div class="track-item" onclick="document.getElementById('phase-html').scrollIntoView({behavior:'smooth'})">
       <div class="track-dot" style="background:var(--html)"></div>
       <div class="track-name" style="color:var(--html)">HTML</div>
       <div class="track-weeks">3–4 wks</div>
     </div>
-    <div class="track-item">
+    <div class="track-item" onclick="document.getElementById('phase-css').scrollIntoView({behavior:'smooth'})">
       <div class="track-dot" style="background:var(--css)"></div>
       <div class="track-name" style="color:var(--css)">CSS</div>
       <div class="track-weeks">4–5 wks</div>
     </div>
-    <div class="track-item">
+    <div class="track-item" onclick="document.getElementById('phase-js').scrollIntoView({behavior:'smooth'})">
       <div class="track-dot" style="background:var(--js)"></div>
       <div class="track-name" style="color:var(--js)">JavaScript</div>
       <div class="track-weeks">8–10 wks</div>
     </div>
-    <div class="track-item">
+    <div class="track-item" onclick="document.getElementById('phase-react').scrollIntoView({behavior:'smooth'})">
       <div class="track-dot" style="background:var(--react)"></div>
       <div class="track-name" style="color:var(--react)">React</div>
       <div class="track-weeks">6–8 wks</div>
     </div>
-    <div class="track-item">
+    <div class="track-item" onclick="document.getElementById('phase-rn').scrollIntoView({behavior:'smooth'})">
       <div class="track-dot" style="background:var(--rn)"></div>
       <div class="track-name" style="color:var(--rn)">React Native</div>
       <div class="track-weeks">6–8 wks</div>
@@ -624,7 +860,7 @@
 <section class="phases">
 
   <!-- PHASE 1: HTML -->
-  <div class="phase phase-html">
+  <div class="phase phase-html" id="phase-html">
     <div class="phase-header">
       <div class="phase-number">01</div>
       <div class="phase-meta">
@@ -714,7 +950,7 @@
   </div>
 
   <!-- PHASE 2: CSS -->
-  <div class="phase phase-css">
+  <div class="phase phase-css" id="phase-css">
     <div class="phase-header">
       <div class="phase-number">02</div>
       <div class="phase-meta">
@@ -843,7 +1079,7 @@
   </div>
 
   <!-- PHASE 3: JavaScript -->
-  <div class="phase phase-js">
+  <div class="phase phase-js" id="phase-js">
     <div class="phase-header">
       <div class="phase-number">03</div>
       <div class="phase-meta">
@@ -1040,7 +1276,7 @@
   </div>
 
   <!-- PHASE 4: REACT -->
-  <div class="phase phase-react">
+  <div class="phase phase-react" id="phase-react">
     <div class="phase-header">
       <div class="phase-number">04</div>
       <div class="phase-meta">
@@ -1166,7 +1402,7 @@
   </div>
 
   <!-- PHASE 5: REACT NATIVE -->
-  <div class="phase phase-rn">
+  <div class="phase phase-rn" id="phase-rn">
     <div class="phase-header">
       <div class="phase-number">05</div>
       <div class="phase-meta">
@@ -1476,9 +1712,79 @@
   </div>
 </section>
 
+<!-- ABOUT SECTION -->
+<section class="about-section" id="about">
+  <p class="section-label">// About the Author</p>
+  <div class="about-inner">
+    <div class="about-photo-wrap">
+<div class="about-photo-placeholder" id="photoPlaceholder" onclick="document.getElementById('photoUpload').click()" style="display:none">        <span class="about-photo-placeholder-icon">👤</span>
+        <span>Click to add<br>your photo</span>
+      </div>
+<img class="about-photo" id="aboutPhoto" src="profile.jpg" alt="Chikamso Uzuagu" style="display:block"/>      <input type="file" id="photoUpload" accept="image/*" style="display:none" onchange="handlePhoto(event)"/>
+    </div>
+    <div class="about-content">
+      <div class="about-label">// The person behind the roadmap</div>
+      <div class="about-name">Chikamso <span>Livinus</span> Uzuagu</div>
+      <p class="about-bio">
+        A self-taught developer in the making, based in Lagos, Nigeria. I embarked on this journey recently and quickly realised that the sheer volume of information online can be overwhelming without a clear path. So I built one — for myself and for anyone else who wants to follow along without the unnecessary clutter. This roadmap is my commitment to staying consistent and accountable, one week at a time.
+      </p>
+      <div class="about-links">
+        <a class="about-link x-link" href="https://x.com/Chikamso_U" target="_blank">
+          <span>𝕏</span> @Chikamso_U
+        </a>
+        <a class="about-link li-link" href="https://www.linkedin.com/in/chikamso-uzuagu-77437940b" target="_blank">
+          <span>in</span> LinkedIn
+        </a>
+        <a class="about-link gh-link" href="https://github.com/MexBoss-Code" target="_blank">
+          <span>⌥</span> MexBoss-Code
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function handlePhoto(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const photo = document.getElementById('aboutPhoto');
+      const placeholder = document.getElementById('photoPlaceholder');
+      photo.src = e.target.result;
+      photo.style.display = 'block';
+      placeholder.style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  }
+</script>
+
 <footer>
-  <div class="footer-text">Road to React Native — Full Scheme of Work</div>
-  <div class="footer-text">~28 weeks · <span class="footer-accent">Web → Mobile</span></div>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-name">Chikamso Livinus Uzuagu</div>
+      <p class="footer-tagline">Documenting my journey from zero to full stack React developer. Built this roadmap so others can follow without the overwhelm.</p>
+    </div>
+    <div class="footer-connect">
+      <div class="footer-connect-label">// Connect with me</div>
+      <a class="footer-link" href="https://x.com/Chikamso_U" target="_blank">
+        <span class="footer-link-icon">𝕏</span>
+        @Chikamso_U
+      </a>
+      <a class="footer-link" href="https://www.linkedin.com/in/chikamso-uzuagu-77437940b" target="_blank">
+        <span class="footer-link-icon">in</span>
+        chikamso-uzuagu
+      </a>
+      <a class="footer-link" href="https://github.com/MexBoss-Code" target="_blank">
+        <span class="footer-link-icon">⌥</span>
+        MexBoss-Code
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-text">© 2026 <span class="footer-accent">Chikamso Livinus Uzuagu</span>. All rights reserved.</div>
+    <div class="footer-text">~28 weeks · <span class="footer-accent">Web → Mobile</span></div>
+  </div>
 </footer>
 
 </body>
